@@ -8,8 +8,8 @@ const server = express();
 
 // Configuring server
 server.use(express.json());
-server.use(v1); // Version 1.x
-server.use(v2); // Version 2.x
+server.use('/api/v1', v1); // Version 1.x
+server.use('/api/v2', v2); // Version 2.x
 
 
 export { server };
