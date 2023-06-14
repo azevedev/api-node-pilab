@@ -22,23 +22,23 @@ const get = (req: Request<{}, {}, School>, res: Response) => {
     const columns = req.query.columns;
     const page = req.query.page;
     const limit = req.query.limit;
-    console.log(filter);
-    console.log(sort);
-    console.log(columns);
-    console.log(page);
-    console.log(limit);
-    console.log('Filters: ');
+    // console.log(filter);
+    // console.log(sort);
+    // console.log(columns);
+    // console.log(page);
+    // console.log(limit);
+    // console.log('Filters: ');
     objForEach(filter, (k, v) => {
-        console.log('key', k, 'value', v);
+        // console.log('key', k, 'value', v);
     });
 
     console.log('Sorts: ');
     objForEach(sort, (_, v) => {
-        console.log('values', (<string><unknown>v).split(','));
+        // console.log('values', (<string><unknown>v).split(','));
     });
 
-    console.log('Columns: ');
-    console.log((<string><unknown>columns).split(','));
+    // console.log('Columns: ');
+    // if(columns != undefined) console.log((<string><unknown>columns).split(','));
 
     return res.status(StatusCodes.OK).json(req.params);
 };
