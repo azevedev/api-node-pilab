@@ -1,17 +1,17 @@
-# App Setup and Configuration Guide
+# App Setup and Configuration Guide 
 
-Follow these steps to set up and configure the application to run it locally.
+Follow these steps to set up and configure the application to run it locally 📓
 
 ## Prerequisites
 
 Make sure you have the following softwares installed on your system:
 
-- [Node.js](https://nodejs.org) (version 14 or higher)
-- [Yarn](https://yarnpkg.com) (version 1.22 or higher)
+- [Node.js](https://nodejs.org) (version 14 or higher) 🧘
+- [Yarn](https://yarnpkg.com) (version 1.22 or higher) 🎊
 
 #### Step 1: Clone the Repository
 
-Start by cloning the repository:
+Start by cloning the repository 🌀 
 
 ```shell
 git clone https://github.com/azevedev/api-node-pilab
@@ -26,33 +26,47 @@ cd api-node-pilab
 yarn install
 ```
 
-This will download and install all the required dependencies specified in the `package.json` file.
+This will download ⬇ and install all the required dependencies specified in the `package.json` file.
 
 #### Step 3: Build the Application
 
-To build the TypeScript code into JavaScript, run the following command:
+To build the TypeScript code into JavaScript, run the following command 👇 
 
 ```shell
 yarn build
 ```
 
-This will compile the TypeScript code and generate the JavaScript output in the designated directory (e.g., `dist`).
+This will compile the TypeScript code and generate the JavaScript output in the designated directory (e.g., `dist` 👍)
 
-#### Step 4: Start the Application
+#### Step 4: Migrations and Seeds 🌱
 
-Once the build process is complete, you can start the application locally using the following command:
+You'll need a database to use the application. I've added a seed file (☝🤓) that will populate your database to simplify the process.
+
+In order to use the migrations, just type ⌨
+```shell
+yarn knex:migrate
+```
+This command will create the database and run the migrations. After that is done, just type:
+```shell
+yarn knex:seed
+```
+
+#### Step 5: Start the Application
+
+Once the build process is complete and you created the database, you can start the application locally using the following command:
 
 ```shell
 yarn start
 ```
 This will run the compiled TypeScript code inside `dist` on your local machine using Node.
 
-To use the TypeScript files on your server, meaning run it as a dev, use:
+To use the TypeScript files on your server, meaning run it as a dev 💻, use:
 
 ```shell
 yarn dev
 ```
 
-And that's it! You can test the application on `http://localhost:3333/api/v1`. Make sure it's the correct port.
+And that's it! 👏🚀
+You can test the application on `http://localhost:3333/api/v1`. Make sure it's the correct port (it'll be displayed on your console).
 
-Feel free to explore and customize the code according to your requirements. Cheers!
+Feel free to explore and customize the code according to your requirements. Cheers! 👋

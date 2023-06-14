@@ -26,7 +26,7 @@ enum EOperations {
     'like' = 'like'
 }
 
-const ok = (req: Request, res: Response) => {
+const ok = async (req: Request, res: Response) => {
     return res.status(StatusCodes.OK).json({status: 'ok'});
 };
 
@@ -52,14 +52,16 @@ const get = async (req: Request<{}, {}, School>, res: Response) => {
             case 'object':
                 // NOT, IN, GT, GTE, LT, LTE
                 (Object.keys(value) as (keyof typeof value)[]).forEach( key => {
-                    let result;
-                    if(key.toString() === 'like') result = <string>('%' + value[key] + '%');
-                    else result = value[key];
-                    requestedFilters.push({
-                        'column':column,
-                        'operation': EOperations[key],
-                        'value': result,
-                    });
+                    if(EOperations[key]){
+                        let result;
+                        if(key.toString() === 'like') result = <string>('%' + value[key] + '%');
+                        else result = value[key];
+                        requestedFilters.push({
+                            'column':column,
+                            'operation': EOperations[key],
+                            'value': result,
+                        });
+                    }
                 });
                 break;
             default:
@@ -69,6 +71,7 @@ const get = async (req: Request<{}, {}, School>, res: Response) => {
     });
 
     const requestedQuerySorts: any[] = [];
+    const str = JSON.stringify(sort, null, 4);
     objForEach(sort, (_, v) => {
         const row = (<string><unknown>v).split(',');
         const column = row[0];
